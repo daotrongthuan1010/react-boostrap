@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Content from './component/Content';
+import Head from './component/Head';
 
 function App() {
+  const items = [{
+    name: "Địa điểm nổi tiếng",
+    free: true
+  },
+  {
+    name: "Điểm đến yêu thích",
+    free: false
+  },
+  {
+    name: "Địa danh bình chọn",
+    free: true
+  }
+];
+const element = items.map(
+  (item, index) => <Content key = {index} name={item.name} free = {item.free}/>
+
+);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Head/>
+    {element}
+    </>
   );
 }
 
