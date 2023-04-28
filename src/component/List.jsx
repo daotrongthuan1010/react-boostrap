@@ -15,7 +15,7 @@ class List extends React.Component {
 
     const element = items.map((item, index)=>{
         return (
-            <Item key={item + index}  items = {items} />
+            <Item key={index}  item = {item} index = {index} />
         );
     })
     return (
