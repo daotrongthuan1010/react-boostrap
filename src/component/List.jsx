@@ -1,17 +1,21 @@
 import React from "react";
+import ListItem from "../mocks/tasks"
 import Item from "./Item";
 
 class List extends React.Component {
     constructor (props) {
         super(props);
         this.state ={
+          items : ListItem
         };
     }    
   render() {
-    const  items = this.props.items;
+
+    let items = this.state.items;
+
     const element = items.map((item, index)=>{
         return (
-            <Item key={item + index}/>
+            <Item key={item + index}  items = {items} />
         );
     })
     return (

@@ -1,5 +1,4 @@
-export default items; 
-[
+let tasks = [
     {
         name: "Học Toán",
         level: 0
@@ -12,4 +11,6 @@ export default items;
         name: "Học Lý",
         level: 2
     },
-]
+];
+  
+  export default tasks;
