@@ -1,48 +1,45 @@
 import React, { Component } from "react";
 import Header from "./component/Header";
 import Control from "./component/Control";
-import Form  from "./component/Form";
+import Form from "./component/Form";
 import List from "./component/List";
 
 class App extends Component {
-
-   constructor (props) {
+  constructor(props) {
     super(props);
-    this.state ={
-        items: [
-            {
-                name: "Học Toán",
-                level: 0
-            },
-            {
-                name: "Học Văn",
-                level: 1
-            },
-            {
-                name: "Học Lý",
-                level: 2
-            },
-        ],
-        showForm: false 
-        
-
-    }
+    this.state = {
+      items: [
+        {
+          name: "Học Toán",
+          level: 0,
+        },
+        {
+          name: "Học Văn",
+          level: 1,
+        },
+        {
+          name: "Học Lý",
+          level: 2,
+        },
+      ],
+      showForm: false,
+    };
 
     this.handler = this.handler.bind(this);
     this.handlerCancel = this.handlerCancel.bind(this);
-   }
+  }
 
-   handler(){
+  handler() {
     this.setState({
-      isShowForm : !this.state.isShowForm
+      isShowForm: !this.state.isShowForm,
     });
-   }
+  }
 
-   handlerCancel(){
+  handlerCancel() {
     this.setState({
-      isShowForm : false
+      isShowForm: false,
     });
-   }
+  }
 
   render() {
     let items = this.state.items;
@@ -51,9 +48,8 @@ class App extends Component {
 
     let elementShowForm = null;
 
-    
-    if(showFormAdd){
-      elementShowForm =  <Form onClickCancel = {this.handlerCancel} />
+    if (showFormAdd) {
+      elementShowForm = <Form onClickCancel={this.handlerCancel} />;
     }
     return (
       <div className="container">
@@ -62,14 +58,13 @@ class App extends Component {
         {/* header end */}
 
         {/* CONTROL (SEARCH + SORT + ADD) : START */}
-        <Control onClickAdd={this.handler} 
-        showFormAdd = {showFormAdd}/>
+        <Control onClickAdd={this.handler} showFormAdd={showFormAdd} />
         {/* CONTROL (SEARCH + SORT + ADD) : END */}
         {/*----form task----*/}
         {elementShowForm}
         {/*----form task----*/}
         {/*----list task----*/}
-        <List items = {items}/>
+        <List items={items} />
         {/*----list task----*/}
       </div>
     );

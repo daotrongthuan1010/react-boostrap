@@ -1,13 +1,12 @@
 import React from "react";
 
 class Form extends React.Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.handlerCancel = this.handlerCancel.bind(this);
   }
 
-  handlerCancel(){
+  handlerCancel() {
     this.props.onClickCancel();
   }
 
@@ -44,10 +43,14 @@ class Form extends React.Component {
               </select>
             </div>
             <button type="button" className="btn btn-primary">
-             Đồng ý
+              Đồng ý
             </button>
-            <button type="button" onClick = {this.handlerCancel} className="btn btn-default" >
-             Hủy Bỏ
+            <button
+              type="button"
+              onClick={this.handlerCancel}
+              className="btn btn-default"
+            >
+              Hủy Bỏ
             </button>
           </form>
         </div>
