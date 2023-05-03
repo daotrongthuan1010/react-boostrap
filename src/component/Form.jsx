@@ -13,7 +13,7 @@ class Form extends React.Component {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Task Name"
+                placeholder="Nhập nhiệm vụ..."
                 ref="task_name"
               />
             </div>
@@ -34,10 +34,10 @@ class Form extends React.Component {
               </select>
             </div>
             <button type="button" className="btn btn-primary">
-             Đồng Ý
+             Đồng ý
             </button>
             <button type="button" className="btn btn-default">
-              Hủy Bỏ
+             Hủy Bỏ
             </button>
           </form>
         </div>

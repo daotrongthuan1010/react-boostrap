@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "./component/Header";
 import Control from "./component/Control";
-import { Form } from "react-bootstrap";
+import Form  from "./component/Form";
 import List from "./component/List";
 
 class App extends Component {
@@ -22,12 +22,30 @@ class App extends Component {
                 name: "Học Lý",
                 level: 2
             },
-        ]
+        ],
+        showForm: false 
+        
+
     }
+
+    this.handler = this.handler.bind(this);
+   }
+
+   handler(){
+    this.setState({
+      isShowForm : !this.state.isShowForm
+    });
    }
 
   render() {
     let items = this.state.items;
+
+    let showFormAdd = this.state.isShowForm;
+
+    let elementShowForm = '';
+    if(showFormAdd){
+      elementShowForm =  <Form />
+    }
     return (
       <div className="container">
         {/* header start */}
@@ -35,10 +53,10 @@ class App extends Component {
         {/* header end */}
 
         {/* CONTROL (SEARCH + SORT + ADD) : START */}
-        <Control />
+        <Control onClickAdd={this.handler}/>
         {/* CONTROL (SEARCH + SORT + ADD) : END */}
         {/*----form task----*/}
-        <Form />
+        {elementShowForm}
         {/*----form task----*/}
         {/*----list task----*/}
         <List items = {items}/>
