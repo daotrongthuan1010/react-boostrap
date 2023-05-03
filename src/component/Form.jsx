@@ -1,6 +1,16 @@
 import React from "react";
 
 class Form extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.handlerCancel = this.handlerCancel.bind(this);
+  }
+
+  handlerCancel(){
+    this.props.onClickCancel();
+  }
+
   render() {
     return (
       <div className="row">
@@ -36,7 +46,7 @@ class Form extends React.Component {
             <button type="button" className="btn btn-primary">
              Đồng ý
             </button>
-            <button type="button" className="btn btn-default">
+            <button type="button" onClick = {this.handlerCancel} className="btn btn-default" >
              Hủy Bỏ
             </button>
           </form>

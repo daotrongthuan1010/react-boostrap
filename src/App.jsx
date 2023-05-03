@@ -29,6 +29,7 @@ class App extends Component {
     }
 
     this.handler = this.handler.bind(this);
+    this.handlerCancel = this.handlerCancel.bind(this);
    }
 
    handler(){
@@ -37,14 +38,22 @@ class App extends Component {
     });
    }
 
+   handlerCancel(){
+    this.setState({
+      isShowForm : false
+    });
+   }
+
   render() {
     let items = this.state.items;
 
     let showFormAdd = this.state.isShowForm;
 
-    let elementShowForm = '';
+    let elementShowForm = null;
+
+    
     if(showFormAdd){
-      elementShowForm =  <Form />
+      elementShowForm =  <Form onClickCancel = {this.handlerCancel} />
     }
     return (
       <div className="container">
@@ -53,7 +62,8 @@ class App extends Component {
         {/* header end */}
 
         {/* CONTROL (SEARCH + SORT + ADD) : START */}
-        <Control onClickAdd={this.handler}/>
+        <Control onClickAdd={this.handler} 
+        showFormAdd = {showFormAdd}/>
         {/* CONTROL (SEARCH + SORT + ADD) : END */}
         {/*----form task----*/}
         {elementShowForm}

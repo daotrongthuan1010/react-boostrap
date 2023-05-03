@@ -20,14 +20,20 @@ class Control extends React.Component {
 
 
   render() {
+    let buttonAdd =  <button type="button"  onClick={this.handler}  className="btn btn-info btn-block">
+    Thêm Nhiệm Vụ
+  </button>;
+    if(this.props.showFormAdd){
+    buttonAdd =  <button type="button" onClick={this.handler}  className="btn btn-success btn-block">
+    Đóng Nhiệm Vụ
+  </button>
+    }
     return (
       <div className="row">
         <Search />
         <Sort />
         <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-        <button type="button"  onClick={this.handler}  className="btn btn-info btn-block">
-          Thêm Nhiệm Vụ
-        </button>
+        {buttonAdd}
       </div>
       </div>
     );
