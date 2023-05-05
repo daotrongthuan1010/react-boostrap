@@ -12,7 +12,8 @@ class Search extends React.Component {
     this.handlerClear = this.handlerClear.bind(this);
   }
   handlerSearch(){
-    console.log(this.state.strSearch);
+      this.props.handlerSearch();
+    
   }
   handlerChange(event){
     this.setState({

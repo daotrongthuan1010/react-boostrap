@@ -13,6 +13,8 @@ class Control extends React.Component {
     this.props.onClickAdd();
   }
 
+  
+
   render() {
     let buttonAdd = (
       <button
