@@ -23,10 +23,12 @@ class App extends Component {
         },
       ],
       showForm: false,
+      isSearch: ''
     };
 
     this.handler = this.handler.bind(this);
     this.handlerCancel = this.handlerCancel.bind(this);
+    this.handlerSearch = this.handlerSearch.bind(this);
   }
 
   handler() {
@@ -38,6 +40,12 @@ class App extends Component {
   handlerCancel() {
     this.setState({
       isShowForm: false,
+    });
+  }
+
+  handlerSearch(){
+    this.setState({
+      isSearch: ''
     });
   }
 
@@ -58,7 +66,10 @@ class App extends Component {
         {/* header end */}
 
         {/* CONTROL (SEARCH + SORT + ADD) : START */}
-        <Control onClickAdd={this.handler} showFormAdd={showFormAdd} />
+        <Control 
+        onSearch={this.handlerSearch}
+        onClickAdd={this.handler} 
+        showFormAdd={showFormAdd} />
         {/* CONTROL (SEARCH + SORT + ADD) : END */}
         {/*----form task----*/}
         {elementShowForm}
