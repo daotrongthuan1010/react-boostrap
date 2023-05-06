@@ -12,7 +12,7 @@ class Search extends React.Component {
     this.handlerClear = this.handlerClear.bind(this);
   }
   handlerSearch(){
-      this.props.handlerSearch();
+      this.props.onClickSearch(this.state.strSearch);
     
   }
   handlerChange(event){
@@ -27,6 +27,7 @@ class Search extends React.Component {
         strSearch : ''
       }
     );
+    this.props.onClickSearch(this.state.strSearch);
   }
 
   render() {

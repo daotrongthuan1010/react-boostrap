@@ -43,13 +43,15 @@ class App extends Component {
     });
   }
 
-  handlerSearch(){
+  handlerSearch(value){
     this.setState({
-      isSearch: ''
+      isSearch: value
     });
   }
 
   render() {
+
+    console.log(this.state.isSearch);
     let items = this.state.items;
 
     let showFormAdd = this.state.isShowForm;
@@ -67,7 +69,7 @@ class App extends Component {
 
         {/* CONTROL (SEARCH + SORT + ADD) : START */}
         <Control 
-        onSearch={this.handlerSearch}
+        onClickSearch={this.handlerSearch}
         onClickAdd={this.handler} 
         showFormAdd={showFormAdd} />
         {/* CONTROL (SEARCH + SORT + ADD) : END */}
