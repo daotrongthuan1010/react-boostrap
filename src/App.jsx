@@ -51,16 +51,30 @@ class App extends Component {
 
   render() {
 
-    console.log(this.state.isSearch);
+   
     let items = this.state.items;
+
+    let pushItem = [];
 
     let showFormAdd = this.state.isShowForm;
 
-    let elementShowForm = null;
+    let search = this.state.isSearch;
 
+    let elementShowForm = null;
+    if(search.length > 0){
+      items.forEach((item)=> {
+        if(item.name.indexOf(search) !== -1 ){
+          pushItem.push(item);
+        }
+    });
+    }
+    else{
+      pushItem = items;
+    }
     if (showFormAdd) {
       elementShowForm = <Form onClickCancel={this.handlerCancel} />;
     }
+
     return (
       <div className="container">
         {/* header start */}
@@ -77,7 +91,7 @@ class App extends Component {
         {elementShowForm}
         {/*----form task----*/}
         {/*----list task----*/}
-        <List items={items} />
+        <List items={pushItem} />
         {/*----list task----*/}
       </div>
     );

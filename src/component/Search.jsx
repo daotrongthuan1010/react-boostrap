@@ -27,7 +27,7 @@ class Search extends React.Component {
         strSearch : ''
       }
     );
-    this.props.onClickSearch(this.state.strSearch);
+    this.props.onClickSearch('');
   }
 
   render() {
