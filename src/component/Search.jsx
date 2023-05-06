@@ -1,33 +1,28 @@
 import React from "react";
 
 class Search extends React.Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-        strSearch : ''
+      strSearch: "",
     };
     this.handlerChange = this.handlerChange.bind(this);
     this.handlerSearch = this.handlerSearch.bind(this);
     this.handlerClear = this.handlerClear.bind(this);
   }
-  handlerSearch(){
-      this.props.onClickSearch(this.state.strSearch);
-    
+  handlerSearch() {
+    this.props.onClickSearch(this.state.strSearch);
   }
-  handlerChange(event){
+  handlerChange(event) {
     this.setState({
-      strSearch: event.target.value
-    })
-    
+      strSearch: event.target.value,
+    });
   }
-  handlerClear(){
-    this.setState(
-      {
-        strSearch : ''
-      }
-    );
-    this.props.onClickSearch('');
+  handlerClear() {
+    this.setState({
+      strSearch: "",
+    });
+    this.props.onClickSearch("");
   }
 
   render() {
@@ -36,17 +31,25 @@ class Search extends React.Component {
         <div className="input-group">
           <input
             value={this.state.strSearch}
-            onChange = {this.handlerChange}
+            onChange={this.handlerChange}
             type="text"
             className="form-control"
             placeholder="Nhập tìm kiếm..."
           />
           <span className="input-group-btn">
-            <button onClick = {this.handlerSearch} className="btn btn-info" type="button">
-             Tìm kiếm
+            <button
+              onClick={this.handlerSearch}
+              className="btn btn-info"
+              type="button"
+            >
+              Tìm kiếm
             </button>
-            <button onClick = {this.handlerClear} className="btn btn-info" type="button">
-             Xóa
+            <button
+              onClick={this.handlerClear}
+              className="btn btn-info"
+              type="button"
+            >
+              Xóa
             </button>
           </span>
         </div>

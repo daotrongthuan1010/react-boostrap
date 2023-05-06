@@ -23,7 +23,7 @@ class App extends Component {
         },
       ],
       showForm: false,
-      isSearch: ''
+      isSearch: "",
     };
 
     this.handler = this.handler.bind(this);
@@ -43,15 +43,13 @@ class App extends Component {
     });
   }
 
-  handlerSearch(value){
+  handlerSearch(value) {
     this.setState({
-      isSearch: value
+      isSearch: value,
     });
   }
 
   render() {
-
-   
     let items = this.state.items;
 
     let pushItem = [];
@@ -60,20 +58,21 @@ class App extends Component {
 
     let search = this.state.isSearch;
 
+    console.log(search);
     let elementShowForm = null;
-    if(search.length > 0){
-      items.forEach((item)=> {
-        if(item.name.indexOf(search) !== -1 ){
+    if (search.length > 0) {
+      items.forEach((item) => {
+        if (item.name.indexOf(search) !== -1) {
           pushItem.push(item);
         }
-    });
-    }
-    else{
+      });
+    } else {
       pushItem = items;
     }
     if (showFormAdd) {
       elementShowForm = <Form onClickCancel={this.handlerCancel} />;
     }
+    console.log(pushItem);
 
     return (
       <div className="container">
@@ -82,10 +81,11 @@ class App extends Component {
         {/* header end */}
 
         {/* CONTROL (SEARCH + SORT + ADD) : START */}
-        <Control 
-        onClickSearch={this.handlerSearch}
-        onClickAdd={this.handler} 
-        showFormAdd={showFormAdd} />
+        <Control
+          onClickSearch={this.handlerSearch}
+          onClickAdd={this.handler}
+          showFormAdd={showFormAdd}
+        />
         {/* CONTROL (SEARCH + SORT + ADD) : END */}
         {/*----form task----*/}
         {elementShowForm}
