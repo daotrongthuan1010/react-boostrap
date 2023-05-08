@@ -1,6 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 
 const Home = () => (
   <div>
@@ -23,28 +22,21 @@ const Contact = () => (
   </div>
 );
 
+const Error = () => (
+  <div>
+    <p>Error 404 not found exception ...</p>
+    <Link to="/">Back</Link>
+  </div>
+);
+
 function App() {
   return (
     <BrowserRouter>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );
