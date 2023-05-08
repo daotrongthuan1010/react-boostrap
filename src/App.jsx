@@ -1,101 +1,53 @@
-import React, { Component } from "react";
-import Header from "./component/Header";
-import Control from "./component/Control";
-import Form from "./component/Form";
-import List from "./component/List";
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [
-        {
-          name: "Học Toán",
-          level: 0,
-        },
-        {
-          name: "Học Văn",
-          level: 1,
-        },
-        {
-          name: "Học Lý",
-          level: 2,
-        },
-      ],
-      showForm: false,
-      isSearch: "",
-    };
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+    <p>Trang chủ react!</p>
+  </div>
+);
 
-    this.handler = this.handler.bind(this);
-    this.handlerCancel = this.handlerCancel.bind(this);
-    this.handlerSearch = this.handlerSearch.bind(this);
-  }
+const About = () => (
+  <div>
+    <h2>About</h2>
+    <p>Giới thiệu về react</p>
+  </div>
+);
 
-  handler() {
-    this.setState({
-      isShowForm: !this.state.isShowForm,
-    });
-  }
+const Contact = () => (
+  <div>
+    <h2>Contact</h2>
+    <p>Liên hệ với chúng tôi.</p>
+  </div>
+);
 
-  handlerCancel() {
-    this.setState({
-      isShowForm: false,
-    });
-  }
-
-  handlerSearch(value) {
-    this.setState({
-      isSearch: value,
-    });
-  }
-
-  render() {
-    let items = this.state.items;
-
-    let pushItem = [];
-
-    let showFormAdd = this.state.isShowForm;
-
-    let search = this.state.isSearch;
-
-    console.log(search);
-    let elementShowForm = null;
-    if (search.length > 0) {
-      items.forEach((item) => {
-        if (item.name.indexOf(search) !== -1) {
-          pushItem.push(item);
-        }
-      });
-    } else {
-      pushItem = items;
-    }
-    if (showFormAdd) {
-      elementShowForm = <Form onClickCancel={this.handlerCancel} />;
-    }
-    console.log(pushItem);
-
-    return (
-      <div className="container">
-        {/* header start */}
-        <Header />
-        {/* header end */}
-
-        {/* CONTROL (SEARCH + SORT + ADD) : START */}
-        <Control
-          onClickSearch={this.handlerSearch}
-          onClickAdd={this.handler}
-          showFormAdd={showFormAdd}
-        />
-        {/* CONTROL (SEARCH + SORT + ADD) : END */}
-        {/*----form task----*/}
-        {elementShowForm}
-        {/*----form task----*/}
-        {/*----list task----*/}
-        <List items={pushItem} />
-        {/*----list task----*/}
+function App() {
+  return (
+    <BrowserRouter>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+          </ul>
+        </nav>
       </div>
-    );
-  }
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
